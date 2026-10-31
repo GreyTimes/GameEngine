@@ -1,0 +1,9 @@
+{
+  "checkpoints" : [ {
+    "id" : 1,
+    "triggerName" : "rock_used",
+    "displayName" : "Portal Created",
+    "timestamp" : 1779813631605,
+    "commandCount" : 11
+  } ]
+}

@@ -1,0 +1,481 @@
+{
+  "gameTitle": "The Last Sigil",
+  "currency": { "name": "Gold" },
+  "startRoom": "forest_entrance",
+
+  "commands": {
+    "enabled": ["go","exit","help","look","take","drop","inventory","playerstate","use","equip","hit","throw","flee","interact","unequip"],
+    "aliases": {
+      "go": ["go","move","walk"],
+      "exit": ["exit","quit","q"],
+      "help": ["help","h","?"],
+      "look": ["look","see","inspect"],
+      "take": ["take","get","pickup"],
+      "drop": ["drop","discard"],
+      "inventory": ["inventory","inv","i"],
+      "playerstate": ["playerstate","stats","s"],
+      "use": ["use"],
+      "equip": ["equip","wear","wield"],
+      "hit": ["hit","attack"],
+      "throw": ["throw"],
+      "flee": ["flee","run"],
+      "interact": ["interact","talk","speak"],
+      "unequip": ["unequip"]
+    }
+  },
+
+  "helpLines": [
+    "~Commands & Syntax~",
+    "go <direction>   -> Move to another room if an exit exists. Example: go north",
+    "look             -> Show items visible in the current room.",
+    "take <item name> -> Pick up an item by NAME from the room. Example: take rusty key",
+    "take all         -> Pick up all items from the room.",
+    "drop <item name> -> Drop an item by Name to the room. Example: drop rusty key.",
+    "drop all         -> Drop all items to the room.",
+    "equip <item name>-> Equip a piece of equipment. Example: equip iron sword.",
+    "unequip weapon | unequip armor",
+    "                 -> Unequip a piece of equipment.",
+    "inventory        -> Show items currently in your inventory.",
+    "use <itemId> <targetId> | use <item name> on <target name>",
+    "                 -> Use an item on a target using IDs. Example: use rusty_key entrance_east_door",
+    "flee             -> Only available at fight/flee prompt; returns you to previous room.",
+    "hit              -> Attack during combat (player attacks first, then monster).",
+    "throw <itemId>   -> Use a consumable item to inflict damage to a monster.",
+    "playerstate      -> Show your current HP.",
+    "interact         -> Talk to NPCs / trade with a trader.",
+    "help             -> Show this help text.",
+    "exit             -> Close the game.",
+    "~Commands' synonyms~",
+    "go <direction>   -> move, walk. Example: Move east.",
+    "look             -> see, inspect.",
+    "take             -> get, pickup.",
+    "drop             -> discard.",
+    "inventory        -> inv, i.",
+    "playerstate      -> stats, s.",
+    "interact         -> talk, speak.",
+    "help             -> h, ?.",
+    "exit             -> quit, q."
+  ],
+
+  "checkpoints": {
+    "maxCheckpoints": 10,
+    "triggers": [
+      {
+        "name": "rock_used",
+        "displayName": "Portal Created",
+        "commandPattern": "use shiny rock on portal",
+        "matchType": "contains"
+      },
+      {
+        "name": "sigil_used",
+        "displayName": "Gate Opened",
+        "commandPattern": "use last sigil on castle gate lock",
+        "matchType": "contains"
+      }
+    ]
+  },
+
+  "player": {
+    "hp": 100,
+    "maxHp": 100,
+    "attackDamage": 8,
+    "baseEscapeChance": 20,
+    "carryCapacity": 6,
+    "money": 20
+  },
+
+  "items": [
+    {
+      "id": "healing_potion",
+      "name": "Healing Potion",
+      "description": "Restores 20 HP.",
+      "consumable": true
+    },
+    {
+      "id": "iron_sword",
+      "name": "Iron Sword",
+      "description": "A sturdy sword.",
+      "attackDamage": 10,
+      "consumable": false
+    },
+
+    {
+      "id": "steel_sword",
+      "name": "Steel Sword",
+      "description": "A strong sword fit for a knight.",
+      "attackDamage": 14,
+      "consumable": false
+    },
+    {
+      "id": "plate_armor",
+      "name": "Plate Armor",
+      "description": "Heavy armor that reduces damage.",
+      "damageReduction": 6,
+      "consumable": false },
+    {
+      "id": "great_axe",
+      "name": "Great Axe",
+      "description": "A heavy weapon for final battles.",
+      "attackDamage": 18,
+      "consumable": false },
+    {
+      "id": "throwing_knife",
+        "name": "Throwing Knife",
+        "description": "A small knife. Good for one quick hit.",
+        "attackDamage": 12,
+        "consumable": true
+    },
+
+    {
+      "id": "shiny_rock",
+      "name": "Shiny Rock",
+      "description": "A small glowing rock from the woods."
+    },
+    {
+      "id": "last_sigil",
+      "name": "Last Sigil",
+      "description": "A sacred seal needed at the castle gate." }
+  ],
+
+  "monsters": [
+    {
+      "id": "wolf",
+      "name": "Wild Wolf",
+      "description": "A hungry wolf.",
+      "hp": 18,
+      "attackDamage": 6,
+      "dropItemId": "healing_potion",
+      "dropCurrency": 5,
+      "fleeSuccessChance": 35
+    },
+    { "id": "bandit",
+      "name": "Bandit",
+      "description": "A thief on the road.",
+      "hp": 22, "attackDamage": 7,
+      "dropItemId": "iron_sword",
+      "dropCurrency": 8,
+      "fleeSuccessChance": 25
+    },
+    {
+      "id": "snake",
+      "name": "Giant Snake",
+      "description": "A giant snake slithering in the stable.",
+      "hp": 16, "attackDamage": 5,
+      "dropItemId": null,
+      "dropCurrency": 0,
+      "fleeSuccessChance": 30,
+      "poisonChance": 100,
+      "poisonDamagePerTurn": 4,
+      "poisonDurationTurns": 5
+    },
+    {
+      "id": "guard",
+      "name": "Castle Guard",
+      "description": "A tired guard still on duty.",
+      "hp": 30, "attackDamage": 10,
+      "dropItemId": null,
+      "dropCurrency": 12,
+      "fleeSuccessChance": 20
+    },
+    {
+      "id": "dark_king",
+      "name": "Dark King",
+      "description": "The king stands twisted by the curse. The sigil’s power burns in his eyes.",
+      "hp": 60,
+      "attackDamage": 14,
+      "dropItemId": null,
+      "dropCurrency": 50,
+      "fleeSuccessChance": 5
+    }
+  ],
+
+  "targets": [
+    {
+      "id": "self",
+      "name": "self",
+      "description": "That's you."
+    },
+    {
+      "id": "big_tree_portal",
+      "name": "portal",
+      "description": "A strange looking door inside the big tree."
+    },
+    {
+      "id": "castle_gate_lock",
+      "name": "gate",
+      "description": "The gate is sealed by the sigil."
+    }
+  ],
+
+  "rooms": [
+    { "id": "forest_entrance",
+      "description": "You stand at the forest entrance. Exits: east to Old Path.",
+      "exits": {
+        "east": "old_path"
+      },
+      "items": ["healing_potion", "throwing_knife", "throwing_knife", "iron_sword", "plate_armor","healing_potion"],
+      "targets": ["self"],
+      "currency": 3
+    },
+
+    {
+      "id": "old_path",
+      "description": "An old path through the trees. Exits: west to Forest Entrance, east to Big Tree, north to Wood Hut.",
+      "exits": {
+        "west": "forest_entrance",
+        "east": "big_tree",
+        "north": "wood_hut"
+      },
+      "items": [],
+      "targets": ["self"],
+      "monsters": ["wolf"],
+      "currency": 4
+    },
+
+    {
+      "id": "wood_hut",
+      "description": "A small wood hut stands alone. Exits: south to Old Path.",
+      "exits": {
+        "south": "old_path"
+      },
+      "items": ["healing_potion"],
+      "targets": ["self"],
+      "currency": 6
+    },
+
+    {
+      "id": "big_tree",
+      "description": "A large tree split at the center. Exits: west to Old Path, east to Open Road.",
+      "exits": {
+        "west": "old_path"
+      },
+      "items": ["shiny_rock"],
+      "targets": ["self", "big_tree_portal"],
+      "currency": 5
+    },
+
+    {
+      "id": "open_road",
+      "description": "A wide open road across the fields. Exits: west to Big Tree, east to Small Shrine.",
+      "exits": {
+        "west": "big_tree",
+        "east": "small_shrine"
+      },
+      "items": [],
+      "targets": ["self"],
+      "monsters": ["bandit"],
+      "currency": 6
+    },
+
+    {
+      "id": "small_shrine",
+      "description": "A small shrine with a faded prayer. Exits: west to Open Road, east to Burned Barn, south to Country Road.",
+      "exits": {
+        "west": "open_road",
+        "east": "burned_barn",
+        "south": "country_road"
+      },
+      "items": [],
+      "targets": ["self"],
+      "currency": 4
+    },
+
+    {
+      "id": "country_road",
+      "description": "A quiet road past empty fields. Exits: north to Small Shrine.",
+      "exits": {
+        "north": "small_shrine"
+      },
+      "items": [],
+      "targets": ["self"],
+      "currency": 4
+    },
+    {
+      "id": "abandoned_stable",
+        "description": "An abandoned stable. Exits: east to Burned Barn.",
+        "exits": {
+          "west": "country_road"
+        },
+      "items": [],
+        "targets": ["self"],
+      "monsters": ["snake"],
+        "currency": 0
+    },
+
+    {
+      "id": "burned_barn",
+      "description": "A burned barn. Something is hidden inside. Exits: west to Small Shrine, east to Castle Gate.",
+      "exits": {
+        "west": "small_shrine",
+        "east": "castle_gate"
+      },
+      "items": ["last_sigil"],
+      "targets": ["self"],
+      "currency": 8
+    },
+
+    {
+      "id": "castle_gate",
+      "description": "A sealed castle gate blocks the way east. The fields are west.",
+      "exits": {
+        "west": "burned_barn"
+      },
+      "items": [],
+      "targets": ["self","castle_gate_lock"],
+      "monsters": ["guard"],
+      "currency": 10
+    },
+
+    {
+      "id": "castle_yard",
+      "description": "The castle yard is quiet. Exits: west to Castle Gate, east to Main Hall, north to Guard Walk.",
+      "exits": {
+        "west": "castle_gate",
+        "east": "main_hall",
+        "north": "guard_walk"
+      },
+      "items": [],
+      "targets": ["self"],
+      "currency": 6
+    },
+
+    {
+      "id": "guard_walk",
+      "description": "A narrow walk along the wall. Exits: south to Castle Yard.",
+      "exits": {
+        "south": "castle_yard"
+      },
+      "items": [],
+      "targets": ["self"],
+      "currency": 3
+    },
+
+    {
+      "id": "main_hall",
+      "description": "A long hall with old banners. Exits: west to Castle Yard, east to King's Room.",
+      "exits": {
+        "west": "castle_yard",
+        "east": "kings_room"
+      },
+      "items": [],
+      "targets": ["self"],
+      "currency": 6
+    },
+
+    {
+      "id": "kings_room",
+      "description": "The king’s room is cold and silent. Exit is west.",
+      "exits": {
+        "west": "main_hall"
+      },
+      "items": [],
+      "targets": ["self"],
+      "monsters": ["dark_king"],
+      "currency": 15
+    }
+  ],
+
+  "npcs": [
+    {
+      "id": "forest_old_man",
+      "name": "Old Woodsman",
+      "type": "dialogue",
+      "room": "wood_hut",
+      "lines": [
+        "Hear my advice stranger.",
+        "In the forest a useful rock is hidden. It glows like a star.",
+        "Use it to go through the portal."
+      ],
+      "dialogue": [
+        { "option": "Where can I find this rock?", "response": "Search the big tree. It’s hidden somewhere inside." },
+        { "option": "What portal?", "response": "There’s a portal hidden in the big tree. It leads to a road across the fields." }
+      ]
+    },
+    {
+      "id": "field_priest",
+      "name": "Village Priest",
+      "type": "dialogue",
+      "room": "small_shrine",
+      "lines": [
+        "The sigil was taken from this land.",
+        "Find it and use it to open the gate."
+      ],
+      "dialogue": [
+        { "option": "What sigil?", "response": "The sigil is a sacred seal that was stolen from the shrine. It’s needed to open the castle gate." },
+        { "option": "Where can I find it?", "response": "I heard it’s hidden in the burned barn east of here." }
+      ]
+    },
+    {
+      "id": "castle_guard",
+      "name": "Castle Steward",
+      "type": "dialogue",
+      "room": "main_hall",
+      "lines": [
+        "The king waits in silence...",
+        "Be ready for what stands beyond."
+      ]
+    },
+    {
+      "id": "castle_trader",
+      "name": "Yard Merchant",
+      "type": "trader",
+      "room": "castle_yard",
+      "greetings": ["You’ll need good steel for what lies ahead."],
+      "inventory": [
+        { "item": "steel_sword", "price": 80 },
+        { "item": "plate_armor", "price": 90 },
+        { "item": "great_axe", "price": 120 },
+        { "item": "healing_potion", "price": 15 }
+      ]
+    }
+  ],
+
+  "winRules": [
+    {
+      "type": "killMonster",
+      "monsterId": "dark_king",
+      "message": "You have defeated the Dark King. The curse is broken. You win."
+    }
+  ],
+
+  "useRules": [
+    {
+      "item": "shiny_rock",
+      "target": "big_tree_portal",
+      "conditions": [
+        { "type": "inRoom", "room": "big_tree" },
+        { "type": "hasItem", "item": "shiny_rock" }
+      ],
+      "effects": [
+        { "type": "message", "text": "The rock crumbles and a portal appears in front of you." },
+        { "type": "addExit", "room": "big_tree", "direction": "east", "to": "open_road" },
+        { "type": "consumeItem", "item": "shiny_rock"}
+      ]
+    },
+    {
+      "item": "last_sigil",
+      "target": "castle_gate_lock",
+      "conditions": [
+        { "type": "inRoom", "room": "castle_gate" },
+        { "type": "hasItem", "item": "last_sigil" }
+      ],
+      "effects": [
+        { "type": "message", "text": "The sigil glows and the gate opens." },
+        { "type": "addExit", "room": "castle_gate", "direction": "east", "to": "castle_yard" },
+        { "type": "consumeItem", "item": "last_sigil" }
+      ]
+    },
+    {
+      "item": "healing_potion",
+      "target": "self",
+      "conditions": [
+        { "type": "hasItem", "item": "healing_potion" }
+      ],
+      "effects": [
+        { "type": "message", "text": "You drink the potion." },
+        { "type": "heal", "amount": 20, "cap": 100 },
+        { "type": "consumeItem", "item": "healing_potion", "skipIfNoEffect": true }
+      ]
+    }
+  ]
+}

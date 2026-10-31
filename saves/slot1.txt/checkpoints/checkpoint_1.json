@@ -1,0 +1,161 @@
+{
+  "player" : {
+    "hp" : 88,
+    "maxHp" : 100,
+    "attackDamage" : 8,
+    "baseEscapeChance" : 20,
+    "carryCapacity" : 6,
+    "money" : 43,
+    "currentRoomId" : "big_tree",
+    "previousRoomId" : "old_path",
+    "equippedWeaponId" : null,
+    "equippedArmorId" : null,
+    "inventoryItemIds" : [ "healing_potion", "healing_potion", "shiny_rock" ],
+    "statusEffects" : [ ]
+  },
+  "rooms" : {
+    "small_shrine" : {
+      "roomId" : "small_shrine",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 4,
+      "exits" : {
+        "west" : "open_road",
+        "south" : "country_road",
+        "east" : "burned_barn"
+      }
+    },
+    "forest_entrance" : {
+      "roomId" : "forest_entrance",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 0,
+      "exits" : {
+        "east" : "old_path"
+      }
+    },
+    "guard_walk" : {
+      "roomId" : "guard_walk",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 3,
+      "exits" : {
+        "south" : "castle_yard"
+      }
+    },
+    "wood_hut" : {
+      "roomId" : "wood_hut",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 0,
+      "exits" : {
+        "south" : "old_path"
+      }
+    },
+    "castle_gate" : {
+      "roomId" : "castle_gate",
+      "itemIds" : [ ],
+      "monsterIds" : [ "guard" ],
+      "targetIds" : [ "self", "castle_gate_lock" ],
+      "currencyAmount" : 10,
+      "exits" : {
+        "west" : "burned_barn"
+      }
+    },
+    "country_road" : {
+      "roomId" : "country_road",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 4,
+      "exits" : {
+        "north" : "small_shrine"
+      }
+    },
+    "big_tree" : {
+      "roomId" : "big_tree",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self", "big_tree_portal" ],
+      "currencyAmount" : 0,
+      "exits" : {
+        "west" : "old_path"
+      }
+    },
+    "old_path" : {
+      "roomId" : "old_path",
+      "itemIds" : [ ],
+      "monsterIds" : [ "wolf" ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 0,
+      "exits" : {
+        "west" : "forest_entrance",
+        "east" : "big_tree",
+        "north" : "wood_hut"
+      }
+    },
+    "kings_room" : {
+      "roomId" : "kings_room",
+      "itemIds" : [ ],
+      "monsterIds" : [ "dark_king" ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 15,
+      "exits" : {
+        "west" : "main_hall"
+      }
+    },
+    "burned_barn" : {
+      "roomId" : "burned_barn",
+      "itemIds" : [ "last_sigil" ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 8,
+      "exits" : {
+        "west" : "small_shrine",
+        "east" : "castle_gate"
+      }
+    },
+    "castle_yard" : {
+      "roomId" : "castle_yard",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 6,
+      "exits" : {
+        "west" : "castle_gate",
+        "east" : "main_hall",
+        "north" : "guard_walk"
+      }
+    },
+    "main_hall" : {
+      "roomId" : "main_hall",
+      "itemIds" : [ ],
+      "monsterIds" : [ ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 6,
+      "exits" : {
+        "west" : "castle_yard",
+        "east" : "kings_room"
+      }
+    },
+    "open_road" : {
+      "roomId" : "open_road",
+      "itemIds" : [ ],
+      "monsterIds" : [ "bandit" ],
+      "targetIds" : [ "self" ],
+      "currencyAmount" : 6,
+      "exits" : {
+        "west" : "big_tree",
+        "east" : "small_shrine"
+      }
+    }
+  },
+  "worldInteractionStage" : 0,
+  "worldInCombat" : false,
+  "worldPendingTraderId" : null,
+  "worldPendingDialogueNpcId" : null
+}

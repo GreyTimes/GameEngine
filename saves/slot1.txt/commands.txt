@@ -1,0 +1,61 @@
+take gold
+go east
+hit
+hit
+hit
+take all
+go north
+talk
+go south
+go north
+take all
+go south
+go east
+take gold
+go east
+take Shiny Rock
+use Shiny Rock on Porstal
+Use Shiny Rock on Portal
+go east
+use shiny rock on portal
+go north
+go east
+hit
+hit
+hit
+take all
+equip iron sword
+go east
+talk
+go south
+take all
+go north
+take all
+go east
+take all
+go east
+hit
+use health potion on self
+hit
+take all
+go east
+use last sigil on gate
+go east
+talk
+yes
+2
+i
+back
+i
+equip Plate Armor
+use healing potion on self
+use healing potion on self
+go north
+take all
+go south
+go east
+talk
+go east
+hit
+hit
+hit

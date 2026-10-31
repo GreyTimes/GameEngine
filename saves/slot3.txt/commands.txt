@@ -1,0 +1,35 @@
+take all
+go east
+equip Iron Sword
+use healing potion on self
+flee
+hit
+i
+equip Plate Armor
+go east
+take all
+use shiny rock on portal
+go east
+hit
+hit
+go east
+go east
+go east
+hit
+hit
+go east
+take all
+go west
+take all
+go east
+use last sigil on gate
+go east
+go east
+go east
+hit
+hit
+i
+throw knife
+throw throwing knife
+use healing potion on self
+hit

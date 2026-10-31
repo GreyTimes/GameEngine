@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="dependencies">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/GameEngineV1.14/dependencies/jackson-core-2.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/GameEngineV1.14/dependencies/jackson-annotations-2.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/GameEngineV1.14/dependencies/jackson-databind-2.15.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
